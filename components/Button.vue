@@ -15,7 +15,7 @@ interface Props {
   variant?: 'primary' | 'secondary' | 'tertiary'
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   variant: 'primary'
 })
 
@@ -27,6 +27,4 @@ const variantClasses = computed(() => {
   }
   return variants[props.variant]
 })
-
-const props = defineProps<Props>()
 </script>
