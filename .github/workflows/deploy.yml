@@ -18,13 +18,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '24'
 
       - run: npm install
 
@@ -32,10 +32,9 @@ jobs:
         env:
           NUXT_APP_BASE_URL: /pronto-original/
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: ./.output/public
-          name: github-pages
 
   deploy:
     needs: build
@@ -47,7 +46,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - uses: actions/deploy-pages@v2
+      - uses: actions/deploy-pages@v5
         id: deployment
-        with:
-          artifact_name: github-pages
