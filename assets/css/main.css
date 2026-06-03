@@ -1,0 +1,132 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  html {
+    @apply bg-charcoal-ink text-on-surface scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-on-surface antialiased overflow-x-hidden selection:bg-tobacco-amber selection:text-charcoal-ink;
+  }
+}
+
+@layer components {
+  .noise-overlay {
+    @apply fixed top-0 left-0 w-screen h-screen pointer-events-none z-9999 opacity-[0.04];
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.03),
+        rgba(255, 255, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+  }
+
+  .hero-gradient {
+    @apply bg-gradient-to-b from-charcoal-ink via-surface-container-low to-charcoal-ink;
+  }
+
+  .stripe-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(245, 240, 232, 0.03) 10px,
+      rgba(245, 240, 232, 0.03) 20px
+    );
+  }
+
+  .reveal-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .reveal-on-scroll.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Typography Classes */
+  .font-display-xl {
+    @apply font-display text-display-xl font-black tracking-tighter;
+  }
+
+  .font-headline-lg {
+    @apply font-display text-headline-lg font-black;
+  }
+
+  .font-headline-lg-mobile {
+    @apply font-display text-headline-lg-mobile font-black;
+  }
+
+  .font-body-lg {
+    @apply font-body text-body-lg;
+  }
+
+  .font-body-md {
+    @apply font-body text-body-md;
+  }
+
+  .font-label-mono {
+    @apply font-mono text-label-mono;
+  }
+
+  .font-label-tag {
+    @apply font-mono text-label-tag font-bold;
+  }
+
+  /* Button Styles */
+  .btn-primary {
+    @apply bg-paper-white text-charcoal-ink px-6 py-3 font-label-mono hover:bg-faded-indigo hover:text-paper-white transition-all duration-300;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-paper-white px-6 py-3 font-label-mono text-paper-white hover:bg-paper-white hover:text-charcoal-ink transition-all duration-300;
+  }
+
+  .btn-tertiary {
+    @apply font-label-mono text-label-mono hover:text-tobacco-amber transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .z-9999 {
+    z-index: 9999;
+  }
+
+  .px-margin-page {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  .px-margin-mobile {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .py-editorial-offset {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  .gap-gutter {
+    gap: 32px;
+  }
+}
